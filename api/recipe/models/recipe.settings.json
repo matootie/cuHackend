@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "name": "recipe",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "published": {
+      "type": "datetime"
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 10
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "tags": {
+      "collection": "tag",
+      "via": "recipes"
+    },
+    "awards": {
+      "collection": "award",
+      "via": "recipes"
+    },
+    "ingredients": {
+      "type": "json",
+      "required": true
+    }
+  }
+}
