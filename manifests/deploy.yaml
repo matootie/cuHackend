@@ -48,6 +48,24 @@ spec:
           value: strapi
         - name: DB_PASSWORD
           value: strapi
+        - name: SPACES_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: spaces-key
+              name: very-secrets
+        - name: SPACES_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              key: spaces-secret
+              name: very-secrets
+        - name: SPACES_REGION
+          value: nyc3
+        - name: SPACES_NAME
+          value: yoiksoft
+        - name: SPACES_CDN
+          value: https://cdn.yoik.software
+        - name: SPACES_DIRECTORY
+          value: glassofmilk
 ---
 apiVersion: v1
 kind: Service
@@ -87,7 +105,10 @@ spec:
           name: web
         env:
         - name: POSTGRES_PASSWORD
-          value: strapi
+          valueFrom:
+            secretKeyRef:
+              key: postgres-password
+              name: very-secrets
         - name: POSTGRES_USER
           value: strapi
         - name: POSTGRES_DB
@@ -144,7 +165,10 @@ spec:
           name: web
         env:
         - name: MEILI_MASTER_KEY
-          value: Password1234
+          valueFrom:
+            secretKeyRef:
+              key: meili-password
+              name: very-secrets
         volumeMounts:
         - name: data
           mountPath: /data.ms

@@ -1,0 +1,13 @@
+{
+  "name": "strapi-provider-upload-spaces",
+  "version": "1.0.0",
+  "description": "DigitalOcean Spaces provider for Strapi Upload plugin.",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "2.792.0"
+  },
+  "strapi": {
+    "isProvider": true
+  },
+  "license": "UNLICENSED"
+}
